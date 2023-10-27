@@ -1,6 +1,6 @@
-[![MIT License](https://img.shields.io/github/license/danzelbel/har-to-k6-client)](https://github.com/danzelbel/har-to-k6-clients/blob/main/LICENSE)
-![Build](https://github.com/danzelbel/har-to-k6-clients/workflows/build/badge.svg)
-![Release](https://github.com/danzelbel/har-to-k6-clients/workflows/release/badge.svg)
+[![MIT License](https://img.shields.io/github/license/danzelbel/oas-to-k6-clients)](https://github.com/danzelbel/oas-to-k6-clients/blob/main/LICENSE)
+![Build](https://github.com/danzelbel/oas-to-k6-clients/actions/workflows/build.yml/badge.svg)
+![Release](https://github.com/danzelbel/oas-to-k6-clients/actions/workflows/release.yml/badge.svg)
 ![NPM Version](https://img.shields.io/npm/v/oas-to-k6-clients.svg)
 ![NPM Weekly Downloads](https://img.shields.io/npm/dw/oas-to-k6-clients.svg)
 
