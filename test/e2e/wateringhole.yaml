@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: Watering Hole
+  version: 1.0.0
+paths:
+  /beer:
+    options:
+      tags:
+        - beer
+      responses:
+        default:
+          description: No response status check
+    head:
+      tags:
+        - beer
+      responses:
+        200:
+          description: Returns nothing
+    get:
+      tags:
+        - beer
+      operationId: getBeers
+      responses:
+        200:
+          description: Returns an array of beer reference
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Beer"
+    post:
+      tags:
+        - beer
+      operationId: addBeer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Beer"
+      responses:
+        200:
+          description: Returns a beer reference
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Beer"
+  /beer/count:
+    get:
+      tags:
+        - beer
+      operationId: beerCount
+      responses:
+        200:
+          description: Returns number
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+  /beer/search:
+    get:
+      tags:
+        - beer
+      operationId: searchBeers
+      parameters:
+        - name: style
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Beer"
+  /beer/{id}:
+    get:
+      tags:
+        - beer
+      operationId: getBeer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Beer"
+  /beer/{id}/upload:
+    post:
+      tags:
+        - beer
+      operationId: uploadFile
+      requestBody:
+        description: "body is application/octet-stream"
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        200:
+          description: ""
+  /beer/style:
+    get:
+      tags:
+        - beer
+      operationId: getBeerStyles
+      parameters:
+        - name: take
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BeerStyle"
+  /beer/style/{id}:
+    put:
+      tags:
+        - beer
+      operationId: getBeerStyle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: api-version
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BeerStyle"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BeerStyle"
+components:
+  schemas:
+    Beer:
+      type: object
+      properties:
+        id:
+          type: integer
+    BeerStyle:
+      type: object
+      properties:
+        id:
+          type: integer

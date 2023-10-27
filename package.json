@@ -1,0 +1,38 @@
+{
+  "name": "oas-to-k6-clients",
+  "description": "Convert OpenApi doc to k6 clients",
+  "version": "0.1.0",
+  "author": "danzelbel",
+  "license": "ISC",
+  "repository": "github:danzelbel/oas-to-k6-clients",
+  "homepage": "https://github.com/danzelbel/oas-to-k6-clients",
+  "bugs": "https://github.com/danzelbel/oas-to-k6-clients/issues",
+  "keywords": [
+    "k6",
+    "oas",
+    "loadtest",
+    "load-test",
+    "load-testing",
+    "server-load",
+    "performance"
+  ],
+  "main": "src/index.js",
+  "bin": "bin/oas-to-k6-clients.js",
+  "typings": "./typings/main.d.ts",
+  "scripts": {
+    "test": "npm-run-all test-unit test-e2e",
+    "test-unit": "cross-env NODE_PATH=src:test ava test/unit",
+    "test-unit-clientconverter": "cross-env NODE_PATH=src:test ava test/unit/ClientConverter.test.js",
+    "test-e2e": "cross-env NODE_PATH=src:test ava test/e2e/test.js test/e2e/**/*.test.js",
+    "test:watch": "cross-env NODE_PATH=src:test ava --watch test/unit"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "@caporal/core": "^2.0.7"
+  },
+  "devDependencies": {
+    "ava": "^5.3.1",
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5"
+  }
+}

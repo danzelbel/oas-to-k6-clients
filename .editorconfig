@@ -1,0 +1,7 @@
+# You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
+[**/**.{json,js,ts,yaml,ps1,code-workspace}]
+indent_style = spaces
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = false
