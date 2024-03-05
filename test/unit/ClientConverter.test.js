@@ -800,8 +800,21 @@ async function testK6Http(t, verb, expected) {
 }
 
 /**
- * getCheck(tag, method, responses)
+ * getCheck(method, responses)
  */
+
+test("response status check - method with params", async t => {
+  const converter = new ClientConverter("beer", undefined);
+  const responses = {
+    200: {
+      description: ""
+    }
+  };
+  t.is(converter.getCheck('get(apiVersion = "1.0")', responses), `
+    check(res, {
+      "BeerClient.get(apiVersion = '1.0') 200": r => r.status === 200
+    });`);
+});
 
 test("response status check", async t => {
   const converter = new ClientConverter("beer", undefined);

@@ -309,7 +309,7 @@ ${comments.join("\n   * ")}
     if (status === "default") return "";
     return `
     check(res, {
-      "${this.#tag.capitalizeFirstLetter()}Client.${method} ${status}": r => r.status === ${status}
+      "${this.#tag.capitalizeFirstLetter()}Client.${method.replaceAll("\"", "'")} ${status}": r => r.status === ${status}
     });`
   }
 
