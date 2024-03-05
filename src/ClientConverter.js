@@ -216,7 +216,8 @@ ${comments.join("\n   * ")}
       }
     }
 
-    let method = `${methodName.toCamelCase()}(${args.join(", ")})`;
+    methodName = methodName.toCamelCase();
+    let method = `${methodName}(${args.join(", ")})`;
     if (this.#uniqueMethods.hasOwnProperty(method)) {
       methodName = `${methodName}${++this.#uniqueMethods[method]}`;
     } else {
@@ -224,7 +225,6 @@ ${comments.join("\n   * ")}
     }
 
     const typedMethod = `${methodName}<RT extends ResponseType | undefined>(${typedArgs.join(", ")})${retType};`;
-    method = `${methodName}(${args.join(", ")})`;
     return { typedMethod, method };
   }
 
